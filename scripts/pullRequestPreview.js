@@ -23,7 +23,7 @@ defaultHeaders["accept"] =
 defaultHeaders["content-type"] = "application/json";
 
 const GH_COMMENT = `
-- Deploy URL: [${vercelURL}] (${vercelURL})
+- Deploy URL: [${DEPLOY_URl}] (${DEPLOY_URl})
 `;
 fetch(
     `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
