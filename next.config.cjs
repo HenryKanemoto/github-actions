@@ -1,7 +1,7 @@
 /**
  * @type {import('next').NextConfig}
  */
-const nextConfig = {
+  export default {
     output: 'export',
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
@@ -14,4 +14,3 @@ const nextConfig = {
     // distDir: 'dist',
   }
    
-  export default nextConfig
