@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import fetch from "node-fetch";
 
 console.log("[DEPLOY_PREVIEW]: START");
 const command = "npm run deploy:staging ";
@@ -11,6 +12,10 @@ console.log(`You can see the deploly preview on: ${DEPLOY_URl}`);
 
 console.log("[GITHUB_COMMENT]: START");
 
+const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER} = process.env;
+console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
+console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
+
 //HEADER da requisição
 const defaultHeaders = {};
 defaultHeaders["authorization"] = `token ${GITHUB_TOKEN}`;
@@ -18,10 +23,6 @@ defaultHeaders["accept"] =
   "application/vnd.github.v3+json; application/vnd.github.antiope-preview+json";
 defaultHeaders["content-type"] = "application/json";
 
-console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
-console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
-
-const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER} = process.env;
 const GH_COMMENT = `
 - Deploy URL: [${vercelURL}] (${vercelURL})
 `;
