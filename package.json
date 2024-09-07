@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "rmdir /s /q build && next build && next build && move out build",
+    "build": "rimraf build && next build && next export && move out build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "npm run lint --fix",
@@ -19,6 +19,7 @@
     "eslint-config-next": "14.2.8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "rimraf": "^6.0.1"
   }
 }
