@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "next": "^14.2.8",
     "react": "^18.3.1",
@@ -11,7 +12,8 @@
     "lint": "next lint",
     "lint:fix": "npm run lint --fix",
     "deploy": "npm build && npx vercel ./build --yes",
-    "deploy:prod": "npm run build && vercel ./build --confirm --no-clipboard --prod --token=$VERCEL_TOKEN",
+    "deploy:prod": "npm run deploy:staging --prod ",
+    "deploy:staging": "npm run build && vercel ./build --confirm --no-clipboard --token=$VERCEL_TOKEN",
     "deploy:preview": "node ./scripts/pullRequestPreview.js"
   },
   "devDependencies": {
