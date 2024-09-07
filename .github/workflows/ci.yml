@@ -1,0 +1,22 @@
+name: "CI (Integração Contínua): Main Workflow"
+
+on: 
+    pull_request:
+        branches: [ "main" ]
+
+jobs:
+    linter:
+        runs-on: "ubuntu-latest"
+
+        steps: 
+            - uses: actions/checkout@v3
+            
+            # Roda a instalação das dependências do projeto
+            - name: Run Installation
+              run: npm install
+            # Roda um comando simples usando o shell de execução
+            - name: Run Linter
+              run: npm run lint
+            # Roda um comando simples usando o shell de execução
+            - name: Run Linter Fix
+              run: npm run lint:fix
