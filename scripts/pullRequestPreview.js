@@ -14,6 +14,7 @@ console.log("[GITHUB_COMMENT]: START");
 const { GITHUB_TOKEN, GITHUB_REPOSITORY, GITHUB_PR_NUMBER} = process.env;
 console.log("GITHUB_REPOSITORY", GITHUB_REPOSITORY);
 console.log("GITHUB_PR_NUMBER", GITHUB_PR_NUMBER);
+console.log("GITHUB_TOKEN", GITHUB_TOKEN);
 
 //HEADER da requisição
 const defaultHeaders = {};
@@ -23,7 +24,7 @@ defaultHeaders["accept"] =
 defaultHeaders["content-type"] = "application/json";
 
 const GH_COMMENT = `
-- Deploy URL: [${DEPLOY_URl}] (${DEPLOY_URl})
+- Deploy URL: [${DEPLOY_URl}](${DEPLOY_URl})
 `;
 fetch(
     `https://api.github.com/repos/${GITHUB_REPOSITORY}/issues/${GITHUB_PR_NUMBER}/comments`,
