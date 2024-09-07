@@ -6,7 +6,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "rimraf build && next build && mV out build",
+    "build": "rimraf build && next build && mv out build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "npm run lint --fix",
