@@ -6,16 +6,20 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "rmdir /s /q build && next build && move out build",
+    "build": "rimraf build && next build && mv out build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "npm run lint --fix",
+    "deploy": "npm build && npx vercel ./build --yes",
+    "deploy:prod": "npm run build && vercel ./build --confirm --no-clipboard --prod --token=$VERCEL_TOKEN",
+    "deploy:preview": "node ./scripts/pullRequestPreview.js"
   },
   "devDependencies": {
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.8",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "3.3.3"
+    "prettier": "3.3.3",
+    "rimraf": "^6.0.1"
   }
 }

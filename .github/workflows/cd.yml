@@ -1,0 +1,24 @@
+name: "CD (Entrega Contínua): Main Workflow"
+
+env:
+    # Necessario gerar um token na vercel
+    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
+    VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
+on: 
+    push:
+        branches: [main, A2.1]
+    
+jobs:
+    deploy:
+        runs-on: "ubuntu-latest"
+        steps: 
+            - uses: actions/checkout@v3
+            
+            # Roda a instalação das dependências do projeto
+            - name: Run Installation
+              run: npm install
+            # Roda um comando simples usando o shell de execução
+            - name: Run Deploy
+              run: npm run deploy:prod
