@@ -17,6 +17,13 @@ jobs:
             # Roda um comando simples usando o shell de execução
             - name: Run Linter
               run: npm run lint
+    preview:
+        runs-on: "ubuntu-latest"
+        steps: 
+            - uses: actions/checkout@v3
+            # Roda a instalação das dependências do projeto
+            - name: Run Installation
+              run: npm install
             # Roda um comando simples usando o shell de execução
-            - name: Run Linter Fix
-              run: npm run lint:fix
+            - name: Run Preview Deployment
+              run: npm run deploy:preview
