@@ -29,6 +29,6 @@ jobs:
             # Roda a instalação das dependências do projeto
             - name: Run Installation
               run: npm install
-            # Roda um comando simples usando o shell de execução
+            # Roda um comando simples usando o shell de execução, o comando gera um preview do site fora de produção com o deploy:staging
             - name: Run Preview Deployment
               run: npm run deploy:preview
