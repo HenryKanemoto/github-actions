@@ -1,5 +1,9 @@
 name: "CI (Integração Contínua): Main Workflow"
 
+permissions: 
+  pull-requests: write
+  contents: write
+
 env:
     # Necessario gerar um token na vercel
     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
