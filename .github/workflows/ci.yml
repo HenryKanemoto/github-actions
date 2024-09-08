@@ -34,3 +34,25 @@ jobs:
             # Roda um comando simples usando o shell de execução, o comando gera um preview do site fora de produção com o deploy:staging
             - name: Run Preview Deployment
               run: npm run deploy:preview
+    test_e2e:
+        runs-on: "ubuntu-latest"
+        steps: 
+            - uses: actions/checkout@v3
+            - uses: actions/checkout/node@v3
+              with:
+                node-version: 16.13.0
+                cache: 'npm'
+            # Install npm dependencies, cache them correctly
+            # and run all Cypress tests
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                build: npm run build
+                start: npm start
+                browser: chrome
+            # Roda a instalação das dependências do projeto
+            - name: Run Installation
+              run: npm install
+            - name: Run Test:E2E
+              run: npm run test:e2e
+    
