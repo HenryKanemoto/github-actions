@@ -50,9 +50,5 @@ jobs:
                 build: npm run build
                 start: npm start
                 browser: chrome
-            # Roda a instalação das dependências do projeto
-            - name: Run Installation
-              run: npm install
-            - name: Run Test:E2E
-              run: npm run test:e2e
+
     
