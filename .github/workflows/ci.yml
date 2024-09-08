@@ -1,10 +1,16 @@
 name: "CI (Integração Contínua): Main Workflow"
 
+permissions: 
+  pull-requests: write
+  contents: write
+
 env:
     # Necessario gerar um token na vercel
     VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     VERCEL_ORG_ID: ${{ secrets.ORG_ID }}
     VERCEL_PROJECT_ID: ${{ secrets.PROJECT_ID }}
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
 on: 
     pull_request:
         branches: [ "main" ]
@@ -29,6 +35,8 @@ jobs:
             # Roda a instalação das dependências do projeto
             - name: Run Installation
               run: npm install
-            # Roda um comando simples usando o shell de execução
+            # Roda um comando simples usando o shell de execução, o comando gera um preview do site fora de produção com o deploy:staging
             - name: Run Preview Deployment
               run: npm run deploy:preview
+
+    
