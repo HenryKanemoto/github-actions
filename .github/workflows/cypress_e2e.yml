@@ -1,0 +1,24 @@
+name: "Cypress:e2e (Integração Contínua): Main Workflow"
+on: 
+    pull_request:
+        branches: [ "main" ]
+    push:
+        branches: [ main ]
+
+jobs:
+    test_e2e:
+        runs-on: "windows-latest"
+        steps: 
+            - uses: actions/checkout@v3
+            - uses: actions/checkout/node@v3
+              with:
+                node-version: 16.13.0
+                cache: 'npm'
+            # Install npm dependencies, cache them correctly
+            # and run all Cypress tests
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                build: npm run build
+                start: npm start
+                browser: edge
